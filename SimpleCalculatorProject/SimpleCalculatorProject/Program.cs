@@ -20,7 +20,7 @@ namespace SimpleCalculatorProject
             Console.WriteLine("Please enter second number");
             string number2 = Console.ReadLine();
             double input2 = numbers.GetNumber2(number2);
-            Console.WriteLine("Please enter + to add or - to substract");
+            Console.WriteLine("Please enter + to add, - to substract, * to multiply or / to divide");
             string symbol = Console.ReadLine();
             string symbolentered = numbers.Sign(symbol);
             double calcs = numbers.Calculations(input1, input2, symbolentered);
