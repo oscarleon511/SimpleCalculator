@@ -10,24 +10,35 @@ namespace ClassLibrary1
     public class Class1
     {
        
-        public double GetNumber1()
+        public double GetNumber1(string numero1)
         {         
-            string number1 = Console.ReadLine();
-            double input1 = double.Parse(number1);
+            
+            double input1 = double.Parse(numero1);//number1);
             return input1;
         }
-        public double GetNumber2()
+        public double GetNumber2(string numero2)
         {           
-            string number2 = Console.ReadLine();
-            double input2 = double.Parse(number2);
+            
+            double input2 = double.Parse(numero2);//number2);
             return input2;
         }
-        public string Sign()
+        public string Sign(string symbol)
         {
-            string symbol = Console.ReadLine();
+            string plussign = "+";
+            string minussign = "-";
+
+           
+            if(symbol == "+")
+            {
+                return plussign;
+            }
+            else if (symbol == "-")
+            {
+                return minussign;
+            }
             return symbol;
         }
-        public double Calculations(double num1, double num2)
+        public double Calculations(double num1, double num2, string sign)
         {
             double sum = 0;
             double subs = 0;
@@ -35,11 +46,11 @@ namespace ClassLibrary1
             sum = num1 + num2;
             subs = num1 - num2;
 
-            if(Sign() == "+")
+            if(Sign(sign) == "+")
             {
                 return sum;
             }
-            else //if (Sign() == "-")
+            else 
             {                
                 return subs;
             }
