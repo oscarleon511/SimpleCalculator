@@ -9,47 +9,36 @@ namespace ClassLibrary1
 {
     public class Class1
     {
-       
-        public double GetNumber1(string numero1)
-        {         
-            
-            double input1 = double.Parse(numero1);
-            return input1;
-        }
-        public double GetNumber2(string numero2)
-        {           
-            
-            double input2 = double.Parse(numero2);
-            return input2;
-        }
-        public string Sign(string symbol)
-        {
-            string plussign = "+";
-            string minussign = "-";
-            string multisign = "*";
-            string divisign = "/";
 
+        public double num1 = 0;
+        public double num2 = 0;
+        public string oper = " ";
+        public double total = 0;
+
+        public void GetNumber1()
+        {
+            Console.WriteLine("Please enter number");
+            string numero1 = Console.ReadLine();
+            double input1 = double.Parse(numero1);
+          
+            num1 = input1;
+        }
+        public void GetNumber2()
+        {
+            Console.WriteLine("Please enter second number and press enter");
+            string numero2 = Console.ReadLine();
+            double input2 = double.Parse(numero2);
+            num2 = input2;
+        }
+        public void Sign()
+        {
+            Console.WriteLine("Please enter + to add, - to substract, * to multiply or / to divide");
+            string symbol = Console.ReadLine();
+            oper = symbol;
            
-            if(symbol == "+")
-            {
-                return plussign;
-            }
-            else if (symbol == "-")
-            {
-                return minussign;
-            }
-            else if (symbol == "*")
-            {
-                return multisign;
-            }
-            else if (symbol == "/")
-            {
-                return divisign;
-            }
-            return symbol;
         }
        
-        public double Calculations(double num1, double num2, string sign)
+        public double Calculations()
         {
             double sum = 0;
             double subs = 0;
@@ -61,28 +50,28 @@ namespace ClassLibrary1
             multiplication = num1 * num2;
             division = num1 / num2;
 
-            if(Sign(sign) == "+")
+            if(oper == "+")
             {
-                return sum;
+                total = sum;
+                return total;
             }
-            else if(Sign(sign) == "-")
+            else if(oper == "-")
             {                
-                return subs;
+                total = subs;
+                return total;
             }
-            else if(Sign(sign)== "*")
+            else if(oper == "*")
             {
-                return multiplication;
+                total = multiplication;
+                return total;
             }
-            else if(Sign(sign)== "/")
+            else if(oper == "/")
             {
-                return division;
+                total = division;
+                return total;
             }
 
-            else
-            {
-                return num1;//throw new Exception("Please try again!!");
-            }
-
+            return total;
            
 
         }
