@@ -10,31 +10,28 @@ namespace ClassLibrary1
     public class Class1
     {
 
-        public double num1 = 0;
-        public double num2 = 0;
-        public string oper = " ";
-        public double total = 0;
+        public double savednum1 = 0;
+        public double savednum2 = 0;
+        public string savedoper = string.Empty;
+       
 
-        public void GetNumber1()
+        public void GetNumber1(string number1)
         {
-            Console.WriteLine("Please enter number");
-            string numero1 = Console.ReadLine();
-            double input1 = double.Parse(numero1);
+                    
+            double input1 = double.Parse(number1);
           
-            num1 = input1;
+            savednum1 = input1;
         }
-        public void GetNumber2()
+        public void GetNumber2(string number2)
         {
-            Console.WriteLine("Please enter second number and press enter");
-            string numero2 = Console.ReadLine();
-            double input2 = double.Parse(numero2);
-            num2 = input2;
+            
+            double input2 = double.Parse(number2);
+            savednum2 = input2;
         }
-        public void Sign()
+        public void Sign(string symbol)
         {
-            Console.WriteLine("Please enter + to add, - to substract, * to multiply or / to divide");
-            string symbol = Console.ReadLine();
-            oper = symbol;
+            
+            savedoper = symbol;
            
         }
        
@@ -44,35 +41,40 @@ namespace ClassLibrary1
             double subs = 0;
             double multiplication = 0;
             double division = 0;
+            double total = 0;
             
-            sum = num1 + num2;
-            subs = num1 - num2;
-            multiplication = num1 * num2;
-            division = num1 / num2;
+            sum = savednum1 + savednum2;
+            subs = savednum1 - savednum2;
+            multiplication = savednum1 * savednum2;
+            division = savednum1 / savednum2;
 
-            if(oper == "+")
+            if(savedoper == "+")
             {
                 total = sum;
                 return total;
+                
             }
-            else if(oper == "-")
+            else if (savedoper == "-")
             {                
                 total = subs;
                 return total;
+                
             }
-            else if(oper == "*")
+            else if(savedoper == "*")
             {
                 total = multiplication;
                 return total;
+                
             }
-            else if(oper == "/")
+            else if(savedoper == "/")
             {
                 total = division;
                 return total;
+                
             }
 
+
             return total;
-           
 
         }
         

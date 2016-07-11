@@ -13,14 +13,13 @@ namespace UnitTestProject1
             //string for input1 is converted to double
             //Arrange
             Class1 test = new Class1();
-            double number = 100;
-            test.GetNumber1();
-           
+            string number1 = "2";
             //Act
-            double num1test = test.num1;
-            
+            test.GetNumber1(number1);
+            double convertednumber = test.savednum1;
+           
             //Assert
-            Assert.AreEqual(number, num1test);
+            Assert.AreEqual(2, convertednumber);
         }
         [TestMethod]
         public void TestForSecondNumber()
@@ -28,134 +27,129 @@ namespace UnitTestProject1
             //string for input2 is converted to double
             //Arrange
             Class1 test = new Class1();
-            double numer = 20;
+            string number2 = "20";
             //Act
-            test.GetNumber2();
-            double num2test= test.num2;
+            test.GetNumber2(number2);
+            double convertednumber = test.savednum2;
             //Assert
-            Assert.AreEqual(numer, num2test);
+            Assert.AreEqual(20, convertednumber);
+           
         }
         [TestMethod]
         public void TestForSubstractSign()
         {
-            //Identify sign 
+            //Identify sign negative sign
             //Arrange
-            Class1 addition = new Class1();
-            string sign = "-";
+            Class1 test = new Class1();
+            string expected = "-";
             //Act
 
-            addition.Sign();
-            string testsign = addition.oper;
+           test.Sign(expected);
+           string actual = test.savedoper;
+            
             //Assert
-            Assert.AreEqual(sign, testsign);
+           Assert.AreEqual(expected, actual);
         }
         [TestMethod]
         public void TestForAdditiontSign()
         {
-            //Identify sign 
+            //Identify positive sign
             //Arrange
-            Class1 addition = new Class1();
-            string sign = "+";
+            Class1 test = new Class1();
+            string expected = "+";
             //Act
-
-            addition.Sign();
-            string testsign = addition.oper;
+            test.Sign(expected);
+            string actual = test.savedoper;
             //Assert
-            Assert.AreEqual(sign, testsign);
+            Assert.AreEqual(expected, actual);
         }
         [TestMethod]
         public void TestForMultiplicationSign()
         {
-            //Identify sign 
+            //Identify multiplication sign
             //Arrange
-            Class1 addition = new Class1();
-            string sign = "*";
+            Class1 test = new Class1();
+            string expected = "*";
             //Act
-            addition.Sign();
-            string testsign = addition.oper;
+            test.Sign(expected);
+            string actual = test.savedoper;
             //Assert
-            Assert.AreEqual(sign, testsign);
+            Assert.AreEqual(expected, actual);
         }
         [TestMethod]
         public void TestForDivisionSign()
         {
-            //Identify sign 
+            //Identify division sign 
             //Arrange
-            Class1 addition = new Class1();
-            string sign = "/";
+            Class1 test = new Class1();
+            string expected = "/";
             //Act
-             addition.Sign();
-             string testsign = addition.oper;
+            test.Sign(expected);
+            string actual = test.savedoper;
             //Assert
-            Assert.AreEqual(sign, testsign);
+            Assert.AreEqual(expected, actual);
         }
-        //[TestMethod]
-        //public void TestForCalculationsSubstract()
-        //{
-        //    //Test for substraction
-        //    //Arrange
-        //    Class1 addition = new Class1();
-        //    double num1 = 20;
-        //    double num2 = 4;
-        //    string sign = "-";
-        //    //Act
+        [TestMethod]
+        public void TestForCalculations_Substract()
+        {
+            //Test for substraction
+            //Arrange
+            Class1 test = new Class1();
+            test.savednum1 = 20;
+            test.savednum2 = 4;
+            test.savedoper = "-";
+            double expected = 16;
+            //Act
+            test.Calculations();
+             //Assert
+           Assert.AreEqual(expected, test.Calculations());
+        }
+        [TestMethod]
+        public void TestForCalculations_Addition()
+        {
+            //Test for addition
+            //Arrange
+            Class1 test = new Class1();
+            test.savednum1 = 20;
+            test.savednum2 = 4;
+            test.savedoper = "+";
+            double expected = 24;
+            //Act
+            test.Calculations();
+            //Assert
+            Assert.AreEqual(expected, test.Calculations());
+        }
+        [TestMethod]
+        public void TestForCalculations_Multiply()
+        {
+            //Test for miltiplication
+            //Arrange
+            Class1 test = new Class1();
+            test.savednum1 = 20;
+            test.savednum2 = 4;
+            test.savedoper = "*";
+            double expected = 80;
+            //Act
+            test.Calculations();
 
-        //   addition.Calculations();
-        //   string symbo = addition.oper;
-        //   symbo = sign;
-        //   double total = 
-
-        //    //Assert
-        //    Assert.AreEqual(16, total);
-        //}
-        //[TestMethod]
-        //public void TestForCalculationsAddition()
-        //{
-        //    //Test for substraction
-        //    //Arrange
-        //    Class1 addition = new Class1();
-        //    double num1 = 20;
-        //    double num2 = 4;
-        //    string sign = "+";
-        //    //Act
-
-        //    double total = addition.Calculations(num1, num2, sign);
-
-        //    //Assert
-        //    Assert.AreEqual(24, total);
-        //}
-        //[TestMethod]
-        //public void TestForCalculationsMultiply()
-        //{
-        //    //Test for substraction
-        //    //Arrange
-        //    Class1 addition = new Class1();
-        //    double num1 = 20;
-        //    double num2 = 4;
-        //    string sign = "*";
-        //    //Act
-
-        //    double total = addition.Calculations(num1, num2, sign);
-
-        //    //Assert
-        //    Assert.AreEqual(80, total);
-        //}
-        //[TestMethod]
-        //public void TestForCalculationsDivision()
-        //{
-        //    //Test for substraction
-        //    //Arrange
-        //    Class1 addition = new Class1();
-        //    double num1 = 20;
-        //    double num2 = 4;
-        //    string sign = "/";
-        //    //Act
-
-        //    double total = addition.Calculations(num1, num2, sign);
-
-        //    //Assert
-        //    Assert.AreEqual(5, total);
-        //}
+            //Assert
+            Assert.AreEqual(expected, test.Calculations());
+        }
+        [TestMethod]
+        public void TestForCalculations_Division()
+        {
+            //Test for substraction
+            //Arrange
+            Class1 test = new Class1();
+            test.savednum1 = 20;
+            test.savednum2 = 5;
+            test.savedoper = "/";
+            double expected = 4;
+            //Act
+            test.Calculations();
+            //Assert
+            Assert.AreEqual(expected, test.Calculations());
+        }
         //[TestMethod]
         //public void TestForCalculationsforDifferentSymbol()
         //{
