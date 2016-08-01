@@ -9,83 +9,69 @@ namespace ClassLibrary1
 {
     public class Class1
     {
-
-        public double savednum1 = 0;
-        public double savednum2 = 0;
-        public string savedoper = string.Empty;
-       
-
-        public void GetNumber1(string number1)
+        public void Calculations(double num1, string oper, double num2)
         {
+            double solution = 0;
+            switch(oper)
+            {
+                case "+":
+                    solution = num1 + num2;
                     
-            double input1 = double.Parse(number1);
-          
-            savednum1 = input1;
-        }
-        public void GetNumber2(string number2)
-        {
-            
-            double input2 = double.Parse(number2);
-            savednum2 = input2;
-        }
-        public void Sign(string symbol)
-        {
-            
-            savedoper = symbol;
-           
-        }
-       
-        public double Calculations()
-        {
-            double sum = 0;
-            double subs = 0;
-            double multiplication = 0;
-            double division = 0;
-            double total = 0;
-            
-            sum = savednum1 + savednum2;
-            subs = savednum1 - savednum2;
-            multiplication = savednum1 * savednum2;
-            division = savednum1 / savednum2;
-
-            if(savedoper == "+")
+                    break;
+                case "-":
+                    solution = num1 - num2;
+                    break;
+                case "*":
+                    solution = num1 *num2;
+                    break;
+                case "/":
+                    solution = num1 / num2;
+                    break;
+                    
+            }
+            //return solution;
+            Console.WriteLine("Your answer is " + solution);
+            Console.WriteLine("Do you want to continue?");
+            string answer = Console.ReadLine();
+            string answerconverted = answer.ToLower();
+            if (answerconverted == "yes")
             {
-                total = sum;
-                return total;
-                
+                ContinuedCalculations(solution);
             }
-            else if (savedoper == "-")
-            {                
-                total = subs;
-                return total;
-                
-            }
-            else if(savedoper == "*")
+            else
             {
-                total = multiplication;
-                return total;
-                
+                Console.WriteLine("Thank you for participating");
             }
-            else if(savedoper == "/")
-            {
-                total = division;
-                return total;
-                
-            }
-
-
-            return total;
-
         }
-        
-        
+           public void Questions()
+        {
+            Console.WriteLine("Please enter first number");
+            double num1 = double.Parse(Console.ReadLine());
+            Console.WriteLine("Please pick an operator + to add, - to sub, * to multiply and / to divide");
+            string oper = Console.ReadLine();
+            Console.WriteLine("Please enter second number");
+            double num2 = double.Parse(Console.ReadLine());
+            Calculations(num1,oper, num2);
+            
+        }
+        public void ContinuedCalculations(double result)
+           {
+               Console.WriteLine("Your answer was " + result);
+               Console.WriteLine("What is your operator?");
+               string oper = Console.ReadLine();
+               Console.WriteLine("Pick your second number");
+               double num2 = double.Parse(Console.ReadLine());
+
+               Calculations(result, oper, num2);
+           }
+
        
-       
-       
-        
-        
+
     }
-}
+       
+  }
+
+
            
            
            
